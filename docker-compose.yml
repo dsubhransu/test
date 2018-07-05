@@ -1,0 +1,9 @@
+version: '2'
+services:
+ web:
+  build:
+    context: . 
+  image: test
+  ports:
+   - "81:80"
+  container_name: apache-test
