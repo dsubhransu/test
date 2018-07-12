@@ -6,4 +6,4 @@ services:
   image: test
   ports:
    - "81:80"
-  container_name: apache-test
+  container_name: apache2-test-cont
