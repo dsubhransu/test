@@ -5,5 +5,5 @@ services:
     context: . 
   image: test
   ports:
-   - "81:80"
-  container_name: apache2-test-cont
+   - "82:80"
+  container_name: apache2-container
