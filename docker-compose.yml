@@ -3,7 +3,7 @@ services:
  web:
   build:
     context: . 
-  image: test
+  image: apache
   ports:
    - "82:80"
   container_name: apache2-container
