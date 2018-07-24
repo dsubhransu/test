@@ -1,0 +1,39 @@
+diff --git a/app.js b/app.js
+index 182d5a0..19d9e88 100644
+--- a/app.js
++++ b/app.js
+@@ -35,7 +35,9 @@ if (cluster.isMaster) {
+   // Set server port
+   server.listen(80); //http
+   var io = require('socket.io').listen(server);
+-  
++  var netid;
++  var currCh = 1;
++
+   console.log('server is running');
+   console.log("Listen in 80"); //http
+   
+@@ -127,7 +129,8 @@ client.on("error", function (err) {
+ 
+ //client.hset("defaultkey","default",'hello',redis.print);
+ 
+-var netid;
++//var netid;
++//var currCh = 1;
+ function common(myresult){ //comn fn1 
+   var finalresult = [];
+   var temp = JSON.parse(myresult);
+@@ -265,7 +268,11 @@ function mainfn_call (nwurl,req,res) {
+   console.log(queryparam);
+   macid = queryparam.INFO.NASID; //get the macid value
+   CONSUME_ID = queryparam.INFO["CONSUME_ID"];  //get the consume_id;
+-  pub.publish('bravo', pub.rpush('bravo', nwurl)); //publishing to bravo channel using redis
++  //pub.publish('bravo', pub.rpush('bravo', nwurl)); //publishing to bravo channel using redis
++  if(currCh == 4)
++    currCh = 1;
++  pub.publish('bravo' + currCh.toString(), pub.rpush('bravo', nwurl)); //publishing to bravo channel using redis
++  currCh += 1;
+ 
+   //redis part (getting details based on macid)
+   client.get(macid, function (err, result) {
+

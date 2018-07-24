@@ -1,0 +1,14 @@
+{
+  "name": "APP_NODE APPLICATION",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "dependencies": {
+    "express": "*",
+    "redis": "*",
+	  "redis-jsonify":"*",
+    "socket.io" : "*"
+  }
+}
